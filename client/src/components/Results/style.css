@@ -1,5 +1,7 @@
 .card {
     font-family: 'Quicksand', sans-serif;
+    margin-top: 2%;
+    border-radius: 10px;
   }
   
   .resultsbutton {
@@ -17,4 +19,13 @@
   
   .content {
     padding: 5px;
+    margin-left: 1%;
+  }
+
+  .card-image{
+      margin: 2%;
+  }
+
+  .card p {
+      margin-left: 2%;
   }

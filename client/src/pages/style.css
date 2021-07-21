@@ -1,0 +1,17 @@
+body{
+    background-color: #7794A6;
+}
+
+.searchsave{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 25px;
+    margin: 50px;
+    color: white;
+}
+
+.readbooks{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 25px;
+    margin: 10px;
+    color: white;
+}

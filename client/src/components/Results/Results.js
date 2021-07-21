@@ -1,10 +1,12 @@
 import React from 'react'
+import './style.css'
 
 export default function Results(props) {
     console.log(props)
     return (
         <div>
       {props.books.map((book, index) => {
+          console.log(book.id)
         return (
           <div key={index}>
             <div className='card'>
@@ -18,8 +20,8 @@ export default function Results(props) {
                 <button
                   type='button'
                   className='resultsbutton'
-                  id={book.volumeInfo.id}
-                  onClick={event => props.savedBooks(event)}>
+                  id={book.id}
+                  onClick={e => props.savedBooks(e)}>
                   Save
                 </button>
                 <a href={book.volumeInfo.infoLink} rel='noopener noreferrer' target='_blank'>
@@ -27,14 +29,10 @@ export default function Results(props) {
                     More info
                   </button>
                 </a>
-                <a rel='noopener noreferrer' target='_blank'>
-                  <button type='button' className='resultsbutton'>
-                    I've read this book!
-                  </button>
-                </a>
               </div>
             </div>
           </div>
+          
         )
       })}
     </div>

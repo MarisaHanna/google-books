@@ -3,13 +3,14 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Wrapper from './components/Wrapper/Wrapper'
 import SavedBooks from './pages/SavedBooks'
 import SearchBooks from './pages/SearchBooks'
+import Navbar from './components/Navbar/Navbar'
 
 
 function App() {
   return (
     <Router>
     <div>
-      {/* <Navbar /> */}
+      <Navbar />
       <Wrapper>
         <Switch>
           <Route exact path='/' component={SearchBooks} />

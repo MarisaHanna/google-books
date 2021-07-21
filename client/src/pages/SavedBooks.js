@@ -5,7 +5,7 @@ import API from '../utils/API'
 
 export default function SavedBooks() {
 
-    const [books, setBooks] = useState([])
+    const [data, setData] = useState([])
 
 
     useEffect(() => {
@@ -16,7 +16,7 @@ export default function SavedBooks() {
     const loadBooks = () => {
         API.getBooks()
         .then((res) => {
-            setBooks(res.data)
+            setData(res.data)
         }).catch((err) => console.log(err))
     }
 
@@ -29,10 +29,10 @@ export default function SavedBooks() {
 
     return (
        <Wrapper>
-           {books.length ? (
+           {data.length ? (
             <div>
              <h1 className='saved'>Saved Books</h1>
-            <SavedBook books={books} deleteBook={deleteBook} />
+            <SavedBook data={data} deleteBook={deleteBook} />
               </div>
            ) : (
             <h2 className='saved'>Sorry! No Saved Books Yet! </h2>
