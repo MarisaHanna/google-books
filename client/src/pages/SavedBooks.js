@@ -17,6 +17,8 @@ export default function SavedBooks() {
         API.getBooks()
         .then((res) => {
             setData(res.data)
+            
+
         }).catch((err) => console.log(err))
     }
 
@@ -29,16 +31,21 @@ export default function SavedBooks() {
 
     return (
        <Wrapper>
-           {data.length ? (
-            <div>
-             <h1 className='saved'>Saved Books</h1>
-            <SavedBook data={data} deleteBook={deleteBook} />
-              </div>
-           ) : (
-            <h2 className='saved'>Sorry! No Saved Books Yet! </h2>
-           )
-          }
-       </Wrapper>
+           <h3>Saved Books</h3>
+           {data ? 
+           data.map((book) => (
+               
+               <div>
+                <SavedBook key={book.id}
+                data={book} 
+                deleteBook={deleteBook} 
+                />
+               </div>
+              )) : (
+               <h2 className='saved'>Sorry! No Saved Books Yet! </h2>
+              )}
+         </Wrapper>
+    
     )
 }
 

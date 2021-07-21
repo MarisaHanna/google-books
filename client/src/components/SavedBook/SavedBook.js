@@ -3,33 +3,22 @@ import './style.css'
 
 export default function SavedBook(props) {
     return (
-        <div>
-            {
-                props.data.map((data, index) => {
-                    return(
-                        <div key={index}>
-                          <div>
-                          <div className='card'>
-                          <div className='card-image'>
-                              <img src={data.volumeInfo.image} alt={data.volumeInfo.title} />
-                              </div>
-                              <p>{data.volumeInfo.title}</p>
-                              <p>by: {data.volumeInfo.authors}</p>
-                              <div className='description'>{data.volumeInfo.description}</div>
-                              <div>
-                                <button type='button' className='buttons' id={data.id} onClick={() => props.deleteBook(data._id)}> Delete</button>
-                              </div>
-                              <div>
-                                <a href={data.volumeInfo.link} rel="noopener noreferrer" target='_blank'>
-                                  <button type='button' className='buttons'>Google Book</button>
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                 )
-             })}
-         </div>
-    )
- }
+           <div className='card'>
+              <div className='card-image'>
+                  <img src={props.data.image} alt={props.data.title} />
+                  </div>
+                  <p>{props.data.title}</p>
+                  <p>by: {props.data.authors}</p>
+                  <div className='description'>{props.data.description}</div>
+                  <div>
+                    <button type='button' className='buttons' id={props.data.id} onClick={() => props.deleteBook(props.data._id)}> Delete</button>
+                  </div>
+                  <div>
+                    <a href={props.data.link} rel="noopener noreferrer" target='_blank'>
+                      <button type='button' className='buttons'>Google Book</button>
+                  </a>
+              </div>
+          </div>
+      )
+}
             

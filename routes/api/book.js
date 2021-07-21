@@ -1,7 +1,9 @@
 const router = require('express').Router()
-const bookControllers = require('../../controllers/booksControllers')
+const bookControllers = require('../../controllers/bookControllers')
 
-router.route('/').get(bookControllers.findAll).post(bookControllers.createbook)
+router.route('/')
+  .get(bookControllers.findAll)
+  .post(bookControllers.createBook)
 
 router
   .route('/:id')

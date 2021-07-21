@@ -15,23 +15,26 @@ export default function SearchBooks() {
        setQuery(e.target.value)
     }
 
-    const savedBooks = (e) => {
-        e.preventDefault()
-        let data = books.filter(book=> book.id === e.target.id)
-        data=data[0];
-        API.saveBook(data)
-        .then(alert('Your book has been saved!'))
-        .catch(err => console.log(err, 'not working!!'))
-        console.log('!!!')
+    const savedBooks = (book) => {
+        if (book.title) {
+            API.saveBook(
+                {
+                    title: book.title,
+                    subtitle: book.subtitle,
+                    authors: book.authors,
+                    description: book.description,
+                    image: book.imageLinks.thumbnail,
+                    link: book.infoLink
+                }
+            )
+            .then(alert('Your book has been saved!'))
+                .then(res => console.log(res))
+                .catch(err => console.log(err));
+        }
+   
     }
 
 
-    const myBooks = (e) => {
-        e.preventDefault()
-        API.saveBook()
-        .then(alert('You have already read this title!'))
-        .catch(err => console.log(err))
-    }
 
 
     const handleSearch = (e) => {
@@ -56,16 +59,20 @@ console.log(results)
     return (
         <div>
             <Form handleChange={handleChange} 
-            handleSearch={handleSearch}/>
-               {books.length ? (
-                    <div>
-                        <h3 className='searchsave'>Your Search Results</h3>
-                        <Results books={books} savedBooks={savedBooks} /> 
-                    </div>
-                ) : (
+            handleSearch={handleSearch}
+            />
+            {/* <h3 className='searchsave'>Your Search Results</h3> */}
+               {books ? 
+                books.map((book) => (
+                 <div>
+                    <Results key={book.id } data={book.volumeInfo} savedBooks={savedBooks}  /> 
+                </div>
+               
+                ) ): (
                     <h3 className='searchsave'>Sorry, no books have been searched yet!</h3>
                 )}
+               
          </div>
-     )
+    )
              
 }
